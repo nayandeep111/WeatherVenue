@@ -36,8 +36,8 @@ jobs:
         HONEYPOT_KEY: ####
         PASS: 
       run: echo "AAAA ${{env.REDIS_PORT}} ${{env.HONEYPOT_KEY}} ${{env.PORT}}"
-      uses: cypress-io/github-action@v2
-      with:
-        wait-on: 'http://localhost:3000'
-        record: false
-        start: npm start
+      # uses: cypress-io/github-action@v2
+      # with:
+      #   wait-on: 'http://localhost:3000'
+      #   record: false
+      #   start: npm start
