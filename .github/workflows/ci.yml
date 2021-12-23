@@ -9,6 +9,14 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+    NODE_ENV: dev
+    PORT: 3000
+    REDIS_PORT: 6379
+    HONEYPOT_KEY: ####
+    PASS: 
+    OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
+    GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
 jobs:
   cypress-ui-test:
 
@@ -32,14 +40,6 @@ jobs:
       run: sudo apt-get install -y redis-tools redis-server
     - name: Verify that redis is up
       run: redis-cli ping
-    env:
-        NODE_ENV: dev
-        PORT: 3000
-        REDIS_PORT: 6379
-        HONEYPOT_KEY: ####
-        PASS: 
-        OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
-        GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
     - name: Run tests in chrome
       uses: cypress-io/github-action@v2
       with:
