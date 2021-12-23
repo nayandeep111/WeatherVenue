@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 17.x]
+        node-version: [16.x, 17.x]
     
     steps:
     - name: Checkout
@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: gulp compress_js
     - name: Run tests
       uses: cypress-io/github-action@v2
       with:
-        build: npm run build
         start: npm start
