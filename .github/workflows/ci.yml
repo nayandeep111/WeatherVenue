@@ -35,9 +35,7 @@ jobs:
         REDIS_PORT: 6379
         HONEYPOT_KEY: ####
         PASS: 
-      run: echo "The Redis port is :${{env.REDIS_PORT}}"
-      run: echo "The HONEYPOT_KEY is :${{env.HONEYPOT_KEY}}"
-      run: echo "The PORT is :${{env.PORT}}"
+      run: echo "AAAA ${{env.REDIS_PORT}} ${{env.HONEYPOT_KEY}} ${{env.PORT}}"
       uses: cypress-io/github-action@v2
       with:
         wait-on: 'http://localhost:3000'
