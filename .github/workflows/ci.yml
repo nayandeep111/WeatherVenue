@@ -32,8 +32,7 @@ jobs:
       run: sudo apt-get install -y redis-tools redis-server
     - name: Verify that redis is up
       run: redis-cli ping
-    - name: Run tests
-      env:
+    env:
         NODE_ENV: dev
         PORT: 3000
         REDIS_PORT: 6379
@@ -41,8 +40,24 @@ jobs:
         PASS: 
         OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
         GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
+    - name: Run tests in chrome
       uses: cypress-io/github-action@v2
       with:
         wait-on: 'http://localhost:3000'
         record: false
         start: npm start
+        start: npm start
+        browser: chrome
+        parallel: true
+        parallelism: 4
+
+    - name: Run tests in Firefox
+      uses: cypress-io/github-action@v2
+      with:
+        wait-on: 'http://localhost:3000'
+        record: false
+        start: npm start
+        start: npm start
+        browser: firefox
+        parallel: true
+        parallelism: 4
