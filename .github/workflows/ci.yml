@@ -29,7 +29,7 @@ jobs:
     - run: npm ci
     - run: gulp compress_js
     - name: Run tests
-      env:
+      - env:
         NODE_ENV: dev
         PORT: 3000
         REDIS_PORT: 6379
