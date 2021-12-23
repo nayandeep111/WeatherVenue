@@ -35,9 +35,10 @@ jobs:
         REDIS_PORT: 6379
         HONEYPOT_KEY: ####
         PASS: 
-      run: echo "AAAA ${{env.REDIS_PORT}} ${{env.HONEYPOT_KEY}} ${{env.PORT}}"
-      # uses: cypress-io/github-action@v2
-      # with:
-      #   wait-on: 'http://localhost:3000'
-      #   record: false
-      #   start: npm start
+        OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
+        GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
+      uses: cypress-io/github-action@v2
+      with:
+        wait-on: 'http://localhost:3000'
+        record: false
+        start: npm start
