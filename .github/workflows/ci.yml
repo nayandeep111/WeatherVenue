@@ -28,6 +28,10 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: gulp compress_js
+    - name: Install redis
+      run: sudo apt-get install -y redis-tools redis-server
+    - name: Verify that redis is up
+      run: redis-cli ping
     - name: Run tests
       env:
         NODE_ENV: dev
