@@ -46,7 +46,6 @@ jobs:
         wait-on: 'http://localhost:3000'
         record: false
         start: npm start
-        start: npm start
         browser: chrome
         parallel: true
         parallelism: 4
@@ -56,7 +55,6 @@ jobs:
       with:
         wait-on: 'http://localhost:3000'
         record: false
-        start: npm start
         start: npm start
         browser: firefox
         parallel: true
