@@ -1,3 +1,8 @@
+# Cypress videos and screenshots
+cypress/screenshots/
+cypress/videos/
+
+
 # Logs
 logs
 *.log
