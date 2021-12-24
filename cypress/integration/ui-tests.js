@@ -1,5 +1,6 @@
 let BASE_URL = "localhost:3000"
 
+
 function test_on_device(size, landscape, test_function) {
     /**
      * Test test_function on specified device
