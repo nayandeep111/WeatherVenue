@@ -43,7 +43,7 @@ jobs:
     - name: Run tests in chrome
       uses: cypress-io/github-action@v2
       with:
-        wait-on: 'http://localhost:3001'
+        wait-on: 'http://localhost:3000'
         wait-on-timeout: 20
         record: false
         start: npm start
@@ -52,7 +52,7 @@ jobs:
     - name: Run tests in Firefox
       uses: cypress-io/github-action@v2
       with:
-        wait-on: 'http://localhost:3001'
+        wait-on: 'http://localhost:3000'
         wait-on-timeout: 20
         record: false
         start: npm start
