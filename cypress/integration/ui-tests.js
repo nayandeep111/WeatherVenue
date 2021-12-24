@@ -105,113 +105,113 @@ describe('Sanity', function () {
     it('Sanity', () => {test_on_all_devices(sanity)});
 });
 
-// describe('Nav', function () {
+describe('Nav', function () {
 
-//     function click_nav_bar_on_mobile() {
-//         cy.get("body > nav.navbar.navbar-expand-lg.navbar-light.bg-light.py-0 > button").click();
-//     }
+    function click_nav_bar_on_mobile() {
+        cy.get("body > nav.navbar.navbar-expand-lg.navbar-light.bg-light.py-0 > button").click();
+    }
 
-//     function functionalities(is_mobile) {
-//         cy.visit(BASE_URL);
-//         cy.get("#exampleModal2").should('not.be.visible');
-//         if (is_mobile)
-//             click_nav_bar_on_mobile();
-//         cy.get("#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(1) > a").click();        
-//         cy.get("#exampleModal2").should('be.visible');
-//     }
-//     it('Functionalities-Desktop', () => {test_on_desktop(
-//         () => {functionalities(false);}
-//     )});
-//     it('Functionalities-Mobile', () => {test_on_mobile(
-//         () => {functionalities(true);}, false
-//     )});
+    function functionalities(is_mobile) {
+        cy.visit(BASE_URL);
+        cy.get("#exampleModal2").should('not.be.visible');
+        if (is_mobile)
+            click_nav_bar_on_mobile();
+        cy.get("#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(1) > a").click();        
+        cy.get("#exampleModal2").should('be.visible');
+    }
+    it('Functionalities-Desktop', () => {test_on_desktop(
+        () => {functionalities(false);}
+    )});
+    it('Functionalities-Mobile', () => {test_on_mobile(
+        () => {functionalities(true);}, false
+    )});
     
-//     it('Functionalities-Mobile-Landescape', () => {test_on_mobile(
-//         () => {functionalities(false);}, true
-//     )});
+    it('Functionalities-Mobile-Landescape', () => {test_on_mobile(
+        () => {functionalities(false);}, true
+    )});
 
-//     function tour(is_mobile) {
-//         cy.visit(BASE_URL);
-//         if (is_mobile) {
-//             click_nav_bar_on_mobile()
-//         }
-//         cy.get(".nav-link").eq(1).click();
-//         cy.get(".introjs-overlay");
-//         cy.get(".introjs-helperLayer");
-//         cy.get(".introjs-tooltipReferenceLayer");
-//         cy.get(".introjs-floating");
-//         cy.get(".introjs-tooltiptext").should('be.visible');
-//         cy.get(".introjs-bullets");
-//         cy.get(".introjs-progress");
-//         cy.get(".introjs-arrow");
-//         cy.get(".introjs-tooltipbuttons");
-//         /// todo just clicking on buttons is not enough :)
-//         function nxt() {
-//             cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton").click();
-//         }
-//         function prv() {
-//             cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-prevbutton").click();
-//         }
-//         cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-prevbutton.introjs-disabled").should('have.class', 'introjs-disabled')
-//         cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton").should('have.class', 'introjs-nextbutton')
-//         nxt(); nxt(); nxt();
-//         cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton.introjs-donebutton").click();
+    function tour(is_mobile) {
+        cy.visit(BASE_URL);
+        if (is_mobile) {
+            click_nav_bar_on_mobile()
+        }
+        cy.get(".nav-link").eq(1).click();
+        cy.get(".introjs-overlay");
+        cy.get(".introjs-helperLayer");
+        cy.get(".introjs-tooltipReferenceLayer");
+        cy.get(".introjs-floating");
+        cy.get(".introjs-tooltiptext").should('be.visible');
+        cy.get(".introjs-bullets");
+        cy.get(".introjs-progress");
+        cy.get(".introjs-arrow");
+        cy.get(".introjs-tooltipbuttons");
+        /// todo just clicking on buttons is not enough :)
+        function nxt() {
+            cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton").click();
+        }
+        function prv() {
+            cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-prevbutton").click();
+        }
+        cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-prevbutton.introjs-disabled").should('have.class', 'introjs-disabled')
+        cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton").should('have.class', 'introjs-nextbutton')
+        nxt(); nxt(); nxt();
+        cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton.introjs-donebutton").click();
 
 
-//         cy.get(".nav-link").eq(1).click();
-//         cy.get(".introjs-overlay");
-//         cy.get(".introjs-helperLayer");
-//         cy.get(".introjs-tooltipReferenceLayer");
-//         cy.get(".introjs-floating");
-//         cy.get(".introjs-tooltiptext").should('be.visible');
-//         cy.get(".introjs-bullets");
-//         cy.get(".introjs-progress");
-//         cy.get(".introjs-arrow");
-//         cy.get(".introjs-tooltipbuttons");
-//         nxt(); prv();
-//         nxt(); nxt(); prv(); prv();
-//         nxt();
-//         nxt(); prv();
-//         nxt();
-//         nxt(); prv();
-//         nxt();
-//         cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton.introjs-donebutton").click();
-//     }
+        cy.get(".nav-link").eq(1).click();
+        cy.get(".introjs-overlay");
+        cy.get(".introjs-helperLayer");
+        cy.get(".introjs-tooltipReferenceLayer");
+        cy.get(".introjs-floating");
+        cy.get(".introjs-tooltiptext").should('be.visible');
+        cy.get(".introjs-bullets");
+        cy.get(".introjs-progress");
+        cy.get(".introjs-arrow");
+        cy.get(".introjs-tooltipbuttons");
+        nxt(); prv();
+        nxt(); nxt(); prv(); prv();
+        nxt();
+        nxt(); prv();
+        nxt();
+        nxt(); prv();
+        nxt();
+        cy.get("body > div.introjs-tooltipReferenceLayer > div > div.introjs-tooltipbuttons > a.introjs-button.introjs-nextbutton.introjs-donebutton").click();
+    }
     
-//     it('Tour-Desktop', () => {test_on_desktop(
-//         () => {tour(false);}
-//     )});
-//     it('Tour-Mobile', () => {test_on_mobile(
-//         () => {tour(true);}, false
-//     )});
+    it('Tour-Desktop', () => {test_on_desktop(
+        () => {tour(false);}
+    )});
+    it('Tour-Mobile', () => {test_on_mobile(
+        () => {tour(true);}, false
+    )});
     
-//     it('Tour-Mobile-Landescape', () => {test_on_mobile(
-//         () => {tour(false);}, true
-//     )});
+    it('Tour-Mobile-Landescape', () => {test_on_mobile(
+        () => {tour(false);}, true
+    )});
 
-//     function disclaimer(is_mobile) {
-//         cy.visit(BASE_URL);
-//         if (is_mobile) {
-//             click_nav_bar_on_mobile()
-//         }
-//         cy.get("#exampleModal").should('not.be.visible');
-//         cy.get("#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(6) > a").click();
-//         cy.get("#exampleModal").should('be.visible');
-//     }
+    function disclaimer(is_mobile) {
+        cy.visit(BASE_URL);
+        if (is_mobile) {
+            click_nav_bar_on_mobile()
+        }
+        cy.get("#exampleModal").should('not.be.visible');
+        cy.get("#navbarNav > ul.navbar-nav.mr-auto > li:nth-child(6) > a").click();
+        cy.get("#exampleModal").should('be.visible');
+    }
 
-//     it('Disclaimer-Desktop', () => {test_on_desktop(
-//         () => {disclaimer(false);}
-//     )});
-//     it('Disclaimer-Mobile', () => {test_on_mobile(
-//         () => {disclaimer(true);}, false
-//     )});
+    it('Disclaimer-Desktop', () => {test_on_desktop(
+        () => {disclaimer(false);}
+    )});
+    it('Disclaimer-Mobile', () => {test_on_mobile(
+        () => {disclaimer(true);}, false
+    )});
     
-//     it('Disclaimer-Mobile-Landescape', () => {test_on_mobile(
-//         () => {disclaimer(false);}, true
-//     )});
+    it('Disclaimer-Mobile-Landescape', () => {test_on_mobile(
+        () => {disclaimer(false);}, true
+    )});
 
     
-// });
+});
 
 // describe('Map', function () {
 
