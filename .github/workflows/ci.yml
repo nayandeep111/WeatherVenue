@@ -1,0 +1,59 @@
+# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+
+on:
+  push:
+    branches: [ master, dev ]
+  pull_request:
+    branches: [ master ]
+
+env:
+    NODE_ENV: dev
+    PORT: 3000
+    REDIS_PORT: 6379
+    HONEYPOT_KEY: ####
+    PASS: 
+    OPENWEATHERMAP_API_KEY:  ${{ secrets.OPENWEATHERMAP_API_KEY }}
+    GOOGLE_MAPS_API_KEY:  ${{ secrets.GOOGLE_MAPS_API_KEY }}
+jobs:
+  cypress-ui-test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 17.x]
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: gulp compress_js
+    - name: Install redis
+      run: sudo apt-get install -y redis-tools redis-server
+    - name: Verify that redis is up
+      run: redis-cli ping
+    - name: Run tests in chrome
+      uses: cypress-io/github-action@v2
+      with:
+        wait-on: 'http://localhost:3000'
+        wait-on-timeout: 20
+        record: false
+        start: npm start
+        browser: chrome
+
+    - name: Run tests in Firefox
+      uses: cypress-io/github-action@v2
+      with:
+        wait-on: 'http://localhost:3000'
+        wait-on-timeout: 20
+        record: false
+        start: npm start
+        browser: firefox
