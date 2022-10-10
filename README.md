@@ -1,4 +1,4 @@
-### 🎉Hacktoverfest🎉
+### 🎉Hacktoberfest🎉
 # WeatherVenue
 
 > Hacktoberfest: I only accept pull requests where the user went through installation. Please share a capture of a working installation with pull request.
